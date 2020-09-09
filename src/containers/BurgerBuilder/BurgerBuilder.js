@@ -14,7 +14,7 @@ class BurgerBulider extends Component {
     ingredientsPrice: {
       salad: 0.15,
       bacon: 0.5,
-      cheese: 0.2,
+      cheese: 0.3,
       meat: 0.8
     },
     totalPrice: 2.5
@@ -24,10 +24,12 @@ class BurgerBulider extends Component {
     let currentIngredients = this.state.ingredients;
     let currentPrice = this.state.totalPrice;
     currentIngredients[nameOfIngredient] += 1;
-    currentPrice += this.state.ingredientsPrice[nameOfIngredient];
+    let latestPrice =
+      currentPrice + this.state.ingredientsPrice[nameOfIngredient];
+    latestPrice = Math.round(latestPrice * 1000) / 1000;
     this.setState({
       ingredients: currentIngredients,
-      totalPrice: currentPrice
+      totalPrice: latestPrice
     });
   }
 
@@ -35,10 +37,12 @@ class BurgerBulider extends Component {
     let currentIngredients = this.state.ingredients;
     let currentPrice = this.state.totalPrice;
     currentIngredients[nameOfIngredient] -= 1;
-    currentPrice -= this.state.ingredientsPrice[nameOfIngredient];
+    let latestPrice =
+      currentPrice - this.state.ingredientsPrice[nameOfIngredient];
+    latestPrice = Math.round(latestPrice * 1000) / 1000;
     this.setState({
       ingredients: currentIngredients,
-      totalPrice: currentPrice
+      totalPrice: latestPrice
     });
   }
 

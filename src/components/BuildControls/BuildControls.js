@@ -5,9 +5,25 @@ import "./BuildControls.css";
 let buildControls = (props) => {
   let ingredients = Object.keys(props.ingredients);
   let Controls = ingredients.map((igName) => {
-    return <BuildControl key={igName} IngredientName={igName} />;
+    let noOfIngredient = props.ingredients[igName];
+    return (
+      <BuildControl
+        key={igName}
+        IngredientName={igName}
+        noOfIngredient={noOfIngredient}
+        lessButton={() => props.removeIngredient(igName)}
+        moreButton={() => props.addIngredient(igName)}
+      />
+    );
   });
-  return <div className="BuildControls">{Controls}</div>;
+  return (
+    <div className="BuildControls">
+      <p>
+        {props.price} <strong>$</strong>
+      </p>
+      <div>{Controls}</div>
+    </div>
+  );
 };
 
 export default buildControls;

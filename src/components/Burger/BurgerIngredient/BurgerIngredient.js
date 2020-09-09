@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./BurgerIngredient.css";
 
 let burgerIngredient = (props) => {
-  let ingredient = null;
+  let ingredient = "";
 
   switch (props.type) {
     case "bread-bottom":
@@ -29,10 +30,14 @@ let burgerIngredient = (props) => {
       ingredient = <div className="Bacon"></div>;
       break;
     default:
-      ingredient = <div></div>;
+      ingredient = <div>Please select a Ingredient</div>;
       break;
   }
   return ingredient;
+};
+
+burgerIngredient.propTypes = {
+  type: PropTypes.string.isRequired
 };
 
 export default burgerIngredient;

@@ -1,7 +1,7 @@
 {
-  "name": "react-burger-builder",
+  "name": "burger-builder-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Simple React App, using Stateful and Stateless components.",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

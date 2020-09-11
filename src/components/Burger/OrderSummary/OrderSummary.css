@@ -1,0 +1,14 @@
+.Order li {
+  list-style-type: none;
+  width: 180px;
+  margin: 0 auto;
+  padding: 0;
+}
+.OrderName {
+  float: left;
+  text-transform: capitalize;
+}
+.OrderNumber {
+  display: block;
+  text-align: right;
+}

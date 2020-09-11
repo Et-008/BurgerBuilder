@@ -18,10 +18,13 @@ let buildControls = (props) => {
   });
   return (
     <div className="BuildControls">
-      <p>
+      <p className="Price">
         {props.price} <strong>$</strong>
       </p>
       <div>{Controls}</div>
+      <button className="OrderButton" disabled={props.price <= 2.5}>
+        Order Now
+      </button>
     </div>
   );
 };

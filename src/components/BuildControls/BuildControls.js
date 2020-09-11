@@ -22,7 +22,11 @@ let buildControls = (props) => {
         {props.price} <strong>$</strong>
       </p>
       <div>{Controls}</div>
-      <button className="OrderButton" disabled={props.price <= 2.5}>
+      <button
+        className="OrderButton"
+        disabled={props.price <= 2.5}
+        onClick={props.ordered}
+      >
         Order Now
       </button>
     </div>

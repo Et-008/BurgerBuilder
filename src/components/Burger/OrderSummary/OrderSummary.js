@@ -6,7 +6,7 @@ let orderSummary = (props) => {
   let ingredientSummary = Object.keys(props.ingredientSummary).map(
     (igntKey) => {
       return (
-        <li>
+        <li key={igntKey}>
           <span className="OrderName">{igntKey}</span>{" "}
           <span className="OrderNumber">
             {props.ingredientSummary[igntKey]}
@@ -27,7 +27,7 @@ let orderSummary = (props) => {
         {ingredientSummary}
       </ul>
       <p>Continue Order?</p>
-      <button>Cancel</button>
+      <button onClick={props.cancelled}>Cancel</button>
       <button>Continue</button>
     </Aux>
   );

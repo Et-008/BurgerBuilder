@@ -6,6 +6,12 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 class BurgerBulider extends Component {
+  constructor(props) {
+    super(props);
+    this.addIngredientHandler = this.addIngredientHandler.bind(this);
+    this.removeIngredientHandler = this.removeIngredientHandler.bind(this);
+    this.showOrderHandler = this.showOrderHandler.bind(this);
+  }
   state = {
     ingredients: {
       salad: 0,
@@ -19,7 +25,8 @@ class BurgerBulider extends Component {
       cheese: 0.3,
       meat: 0.8
     },
-    totalPrice: 2.5
+    totalPrice: 2.5,
+    showOrder: false
   };
 
   addIngredientHandler(nameOfIngredient) {
@@ -48,18 +55,26 @@ class BurgerBulider extends Component {
     });
   }
 
+  showOrderHandler() {
+    this.setState({ showOrder: !this.state.showOrder });
+  }
+
   render() {
     return (
       <Aux>
-        <Modal>
-          <OrderSummary ingredientSummary={this.state.ingredients} />
+        <Modal show={this.state.showOrder}>
+          <OrderSummary
+            ingredientSummary={this.state.ingredients}
+            cancelled={this.showOrderHandler}
+          />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           price={this.state.totalPrice}
           ingredients={this.state.ingredients}
-          addIngredient={this.addIngredientHandler.bind(this)}
-          removeIngredient={this.removeIngredientHandler.bind(this)}
+          addIngredient={this.addIngredientHandler}
+          removeIngredient={this.removeIngredientHandler}
+          ordered={this.showOrderHandler}
         />
       </Aux>
     );

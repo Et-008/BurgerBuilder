@@ -4,6 +4,7 @@ import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
+import Backdrop from "../../components/UI/Backdrop/Backdrop";
 
 class BurgerBulider extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ class BurgerBulider extends Component {
   render() {
     return (
       <Aux>
+        <Backdrop show={this.state.showOrder} clicked={this.showOrderHandler} />
         <Modal show={this.state.showOrder}>
           <OrderSummary
             ingredientSummary={this.state.ingredients}

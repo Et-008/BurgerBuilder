@@ -1,3 +1,6 @@
+.OrderSummary {
+  z-index: 300;
+}
 .Order li {
   list-style-type: none;
   width: 180px;

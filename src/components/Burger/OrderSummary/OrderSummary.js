@@ -16,7 +16,7 @@ let orderSummary = (props) => {
     }
   );
   return (
-    <Aux>
+    <Aux className="OrderSummary">
       <h3>Your Order</h3>
       <ul className="Order">
         <li>

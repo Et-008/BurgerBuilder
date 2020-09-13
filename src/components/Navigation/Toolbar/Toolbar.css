@@ -15,7 +15,12 @@
   height: 80%;
 }
 @media (max-width: 499px) {
-  .Responsive {
+  .ResponsiveNav {
+    display: none;
+  }
+}
+@media (min-width: 500px) {
+  .ResponsiveMenuBtn {
     display: none;
   }
 }

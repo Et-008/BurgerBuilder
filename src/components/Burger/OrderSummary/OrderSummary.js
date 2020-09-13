@@ -1,18 +1,17 @@
 import React from "react";
 import Aux from "../../../hoc/Aux";
+import Button from "../../UI/Button/Button";
 import "./OrderSummary.css";
 
 let orderSummary = (props) => {
   let ingredientSummary = Object.keys(props.ingredientSummary).map(
     (igntKey) => {
-      return (
+      return props.ingredientSummary[igntKey] ? (
         <li key={igntKey}>
           <span className="OrderName">{igntKey}</span>{" "}
-          <span className="OrderNumber">
-            {props.ingredientSummary[igntKey]}
-          </span>
+          <span className="OrderValue">{props.ingredientSummary[igntKey]}</span>
         </li>
-      );
+      ) : null;
     }
   );
   return (
@@ -21,14 +20,22 @@ let orderSummary = (props) => {
       <ul className="Order">
         <li>
           <strong className="OrderName">Ingredient</strong>
-          <strong className="OrderNumber">no's</strong>
+          <strong className="OrderValue">no's</strong>
         </li>
         <p></p>
         {ingredientSummary}
+        <li>
+          <hr />
+          <span className="OrderName">Total Price:</span>{" "}
+          <strong className="OrderValue">$ {props.price}</strong>
+        </li>
       </ul>
-      <p>Continue Order?</p>
-      <button onClick={props.cancelled}>Cancel</button>
-      <button>Continue</button>
+      <Button btnType={"Danger"} clicked={props.cancelled}>
+        Cancel
+      </Button>
+      <Button btnType={"Success"} clicked={props.continue}>
+        Continue
+      </Button>
     </Aux>
   );
 };

@@ -3,15 +3,13 @@
 }
 .Order li {
   list-style-type: none;
-  width: 180px;
-  margin: 0 auto;
-  padding: 0;
+  width: 90%;
 }
 .OrderName {
   float: left;
   text-transform: capitalize;
 }
-.OrderNumber {
+.OrderValue {
   display: block;
   text-align: right;
 }

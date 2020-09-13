@@ -7,12 +7,6 @@ import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 
 class BurgerBulider extends Component {
-  constructor(props) {
-    super(props);
-    this.addIngredientHandler = this.addIngredientHandler.bind(this);
-    this.removeIngredientHandler = this.removeIngredientHandler.bind(this);
-    this.showOrderHandler = this.showOrderHandler.bind(this);
-  }
   state = {
     ingredients: {
       salad: 0,
@@ -27,10 +21,10 @@ class BurgerBulider extends Component {
       meat: 0.8
     },
     totalPrice: 2.5,
-    showOrder: false
+    showOrderSummary: false
   };
 
-  addIngredientHandler(nameOfIngredient) {
+  addIngredientHandler = (nameOfIngredient) => {
     let currentIngredients = this.state.ingredients;
     let currentPrice = this.state.totalPrice;
     currentIngredients[nameOfIngredient] += 1;
@@ -41,9 +35,9 @@ class BurgerBulider extends Component {
       ingredients: currentIngredients,
       totalPrice: latestPrice
     });
-  }
+  };
 
-  removeIngredientHandler(nameOfIngredient) {
+  removeIngredientHandler = (nameOfIngredient) => {
     let currentIngredients = this.state.ingredients;
     let currentPrice = this.state.totalPrice;
     currentIngredients[nameOfIngredient] -= 1;
@@ -54,20 +48,33 @@ class BurgerBulider extends Component {
       ingredients: currentIngredients,
       totalPrice: latestPrice
     });
-  }
+  };
 
-  showOrderHandler() {
-    this.setState({ showOrder: !this.state.showOrder });
-  }
+  showOrderSummaryHandler = () => {
+    this.setState({ showOrderSummary: true });
+  };
+
+  cancelOrderHandler = () => {
+    this.setState({ showOrderSummary: false });
+  };
+
+  continueOrderHandler = () => {
+    alert("Order Placed");
+  };
 
   render() {
     return (
       <Aux>
-        <Backdrop show={this.state.showOrder} clicked={this.showOrderHandler} />
-        <Modal show={this.state.showOrder}>
+        <Backdrop
+          show={this.state.showOrderSummary}
+          clicked={this.cancelOrderHandler}
+        />
+        <Modal show={this.state.showOrderSummary}>
           <OrderSummary
             ingredientSummary={this.state.ingredients}
-            cancelled={this.showOrderHandler}
+            price={this.state.totalPrice}
+            cancelled={this.cancelOrderHandler}
+            continue={this.continueOrderHandler}
           />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
@@ -76,7 +83,7 @@ class BurgerBulider extends Component {
           ingredients={this.state.ingredients}
           addIngredient={this.addIngredientHandler}
           removeIngredient={this.removeIngredientHandler}
-          ordered={this.showOrderHandler}
+          ordered={this.showOrderSummaryHandler}
         />
       </Aux>
     );

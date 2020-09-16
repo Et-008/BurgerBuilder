@@ -1,0 +1,16 @@
+.DrawerToggle {
+  width: 40px;
+  height: 41px;
+  display: grid;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.DrawerToggle div {
+  width: 90%;
+  height: 3px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+}

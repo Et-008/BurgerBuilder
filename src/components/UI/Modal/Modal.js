@@ -9,4 +9,6 @@ let modal = (props) => {
   return <div className={modalClass.join(" ")}>{props.children}</div>;
 };
 
-export default modal;
+export default React.memo(modal, function areEqual(prevState, nextState) {
+  return prevState.show === nextState.show;
+});

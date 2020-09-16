@@ -3,7 +3,7 @@ import Aux from "../../../hoc/Aux";
 import Button from "../../UI/Button/Button";
 import "./OrderSummary.css";
 
-let orderSummary = (props) => {
+let OrderSummary = (props) => {
   let ingredientSummary = Object.keys(props.ingredientSummary).map(
     (igntKey) => {
       return props.ingredientSummary[igntKey] ? (
@@ -40,4 +40,4 @@ let orderSummary = (props) => {
   );
 };
 
-export default orderSummary;
+export default OrderSummary;

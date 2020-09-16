@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Aux from "../../hoc/Aux";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/BuildControls/BuildControls";
@@ -59,7 +60,14 @@ class BurgerBulider extends Component {
   };
 
   continueOrderHandler = () => {
-    alert("Order Placed");
+    axios
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://code-pen-io.firebaseio.com/"
+      )
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+
+    return this.setState({ showOrderSummary: false });
   };
 
   render() {

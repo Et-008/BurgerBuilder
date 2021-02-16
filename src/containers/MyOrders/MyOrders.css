@@ -1,0 +1,44 @@
+.MyOrders {
+  margin: auto;
+}
+.OrderList {
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.Order {
+  padding: 1% 5%;
+  margin: 20px;
+  box-sizing: border-box;
+  border: 1px solid silver;
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px 0 grey;
+}
+.OrderDate {
+  float: right;
+}
+
+@media (min-width: 500px) {
+  .Order {
+    min-width: 75%;
+    display: inline-block;
+  }
+  .MyOrders {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  .OrderList {
+    padding: 10px;
+    height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 900px) {
+  .Order {
+    min-width: 50%;
+    display: inline-block;
+  }
+}

@@ -60,14 +60,17 @@ class BurgerBulider extends Component {
   };
 
   continueOrderHandler = () => {
+    let order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice
+    };
     axios
-      .get(
-        "https://cors-anywhere.herokuapp.com/https://code-pen-io.firebaseio.com/"
-      )
-      .then((res) => console.log(res))
+      .post("https://code-pen-io.firebaseio.com/orders.json", order)
+      .then((res) => {
+        console.log(res);
+      })
       .catch((error) => console.log(error));
-
-    return this.setState({ showOrderSummary: false });
+    this.setState({ showOrderSummary: false });
   };
 
   render() {

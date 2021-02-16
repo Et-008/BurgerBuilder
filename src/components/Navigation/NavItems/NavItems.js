@@ -4,10 +4,8 @@ import "./NavItems.css";
 
 let navItems = (props) => (
   <ul className="NavItems">
-    <NavItem link="/" active>
-      Burger Builder
-    </NavItem>
-    <NavItem link="/">My Orders</NavItem>
+    <NavItem link="/">Burger Builder</NavItem>
+    <NavItem link="/myorders">My Orders</NavItem>
   </ul>
 );
 
